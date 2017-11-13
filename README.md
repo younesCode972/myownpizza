@@ -1,2 +1,2 @@
 # myownpizza
-projet afpa du grou anchristayou
+projet afpa du groupe anchristayou
