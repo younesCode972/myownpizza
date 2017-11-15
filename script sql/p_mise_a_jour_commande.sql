@@ -1,7 +1,8 @@
 -- --------------------------------------------------------------------------------
--- mise_a_jour_commande routine/procédure - table HISTORIQUE_COMMANDE
+-- mise_a_jour_commande Group Routines
 -- --------------------------------------------------------------------------------
 DELIMITER $$
+
 create procedure mise_a_jour_commande()
 begin
 	
@@ -24,9 +25,11 @@ begin
 			
 			insert into Archive values (null, getdate(),v_no_commande,v_date, v_id);
 			delete from Historique_commande where current of c_historique_commande;
+		else 
+			insert into Erreurs values (3200,'Suppression automatique de la commande ' || v_no_commande || ' impossible');
 
 		end if;
 	end loop;
 	close c_historique_commande;
 end
-$$	
+$$
